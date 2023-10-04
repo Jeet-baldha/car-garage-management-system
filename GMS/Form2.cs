@@ -169,6 +169,13 @@ namespace GMS
                 ccolor_text.Text = dr["carColor"].ToString();
                 entery_date.Text = dr["enteryDate"].ToString();
                 delivery_date.Text = dr["deliveryDate"].ToString();
+                cnErrorText.Visible = false;
+            }
+            else
+            {
+                cnErrorText.Visible = true;
+                MessageBox.Show("Vehical not Found");
+                cnumber_text.Text = "";
             }
 
         }

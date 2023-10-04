@@ -33,25 +33,24 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.entry_date = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dg = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.addpart_button = new System.Windows.Forms.Button();
             this.savebill_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgBill = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.partquan_text = new System.Windows.Forms.TextBox();
-            this.price_text = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.servicecharge_text = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.addbill_button = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.lblCN = new System.Windows.Forms.Label();
+            this.entery_date = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBill)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -101,13 +100,6 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Date  :";
             // 
-            // entry_date
-            // 
-            this.entry_date.Location = new System.Drawing.Point(525, 172);
-            this.entry_date.Name = "entry_date";
-            this.entry_date.Size = new System.Drawing.Size(200, 22);
-            this.entry_date.TabIndex = 18;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -118,15 +110,16 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Service Details  -----------------------------------------";
             // 
-            // dataGridView1
+            // dg
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 300);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(406, 363);
-            this.dataGridView1.TabIndex = 21;
+            this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg.Location = new System.Drawing.Point(44, 300);
+            this.dg.Name = "dg";
+            this.dg.RowHeadersWidth = 51;
+            this.dg.RowTemplate.Height = 24;
+            this.dg.Size = new System.Drawing.Size(406, 363);
+            this.dg.TabIndex = 21;
+            this.dg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellContentClick);
             // 
             // label3
             // 
@@ -148,6 +141,7 @@
             this.addpart_button.TabIndex = 26;
             this.addpart_button.Text = "Add Parts";
             this.addpart_button.UseVisualStyleBackColor = false;
+            this.addpart_button.Click += new System.EventHandler(this.addpart_button_Click);
             // 
             // savebill_button
             // 
@@ -159,6 +153,7 @@
             this.savebill_button.TabIndex = 29;
             this.savebill_button.Text = "Save Bill";
             this.savebill_button.UseVisualStyleBackColor = false;
+            this.savebill_button.Click += new System.EventHandler(this.savebill_button_Click);
             // 
             // label4
             // 
@@ -170,15 +165,15 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "Billing Details";
             // 
-            // dataGridView2
+            // dgBill
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(737, 300);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(406, 363);
-            this.dataGridView2.TabIndex = 27;
+            this.dgBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBill.Location = new System.Drawing.Point(737, 300);
+            this.dgBill.Name = "dgBill";
+            this.dgBill.RowHeadersWidth = 51;
+            this.dgBill.RowTemplate.Height = 24;
+            this.dgBill.Size = new System.Drawing.Size(406, 363);
+            this.dgBill.TabIndex = 27;
             // 
             // label7
             // 
@@ -196,23 +191,6 @@
             this.partquan_text.Name = "partquan_text";
             this.partquan_text.Size = new System.Drawing.Size(158, 22);
             this.partquan_text.TabIndex = 31;
-            // 
-            // price_text
-            // 
-            this.price_text.Location = new System.Drawing.Point(517, 456);
-            this.price_text.Name = "price_text";
-            this.price_text.Size = new System.Drawing.Size(158, 22);
-            this.price_text.TabIndex = 33;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(559, 414);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 22);
-            this.label8.TabIndex = 32;
-            this.label8.Text = "Price";
             // 
             // servicecharge_text
             // 
@@ -241,13 +219,14 @@
             this.addbill_button.TabIndex = 36;
             this.addbill_button.Text = "Add in Bill";
             this.addbill_button.UseVisualStyleBackColor = false;
+            this.addbill_button.Click += new System.EventHandler(this.addbill_button_Click);
             // 
-            // textBox1
+            // txtTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(985, 688);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 22);
-            this.textBox1.TabIndex = 38;
+            this.txtTotal.Location = new System.Drawing.Point(985, 688);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(158, 22);
+            this.txtTotal.TabIndex = 38;
             // 
             // label11
             // 
@@ -259,38 +238,56 @@
             this.label11.TabIndex = 37;
             this.label11.Text = "Total  :";
             // 
+            // lblCN
+            // 
+            this.lblCN.AutoSize = true;
+            this.lblCN.BackColor = System.Drawing.Color.Transparent;
+            this.lblCN.ForeColor = System.Drawing.Color.Red;
+            this.lblCN.Location = new System.Drawing.Point(218, 198);
+            this.lblCN.Name = "lblCN";
+            this.lblCN.Size = new System.Drawing.Size(153, 16);
+            this.lblCN.TabIndex = 39;
+            this.lblCN.Text = "Please enter car number";
+            this.lblCN.Visible = false;
+            // 
+            // entery_date
+            // 
+            this.entery_date.Location = new System.Drawing.Point(517, 173);
+            this.entery_date.Name = "entery_date";
+            this.entery_date.Size = new System.Drawing.Size(120, 22);
+            this.entery_date.TabIndex = 40;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1192, 802);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.entery_date);
+            this.Controls.Add(this.lblCN);
+            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.addbill_button);
             this.Controls.Add(this.servicecharge_text);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.price_text);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.partquan_text);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.savebill_button);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgBill);
             this.Controls.Add(this.addpart_button);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dg);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.entry_date);
             this.Controls.Add(this.cnumber_text);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Name = "Form4";
             this.Text = "Billing";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBill)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,22 +300,21 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker entry_date;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dg;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addpart_button;
         private System.Windows.Forms.Button savebill_button;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgBill;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox partquan_text;
-        private System.Windows.Forms.TextBox price_text;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox servicecharge_text;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button addbill_button;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblCN;
+        private System.Windows.Forms.TextBox entery_date;
     }
 }

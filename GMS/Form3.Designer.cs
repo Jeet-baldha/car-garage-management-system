@@ -145,7 +145,7 @@
             this.dsGrid.Name = "dsGrid";
             this.dsGrid.RowHeadersWidth = 51;
             this.dsGrid.RowTemplate.Height = 24;
-            this.dsGrid.Size = new System.Drawing.Size(1014, 236);
+            this.dsGrid.Size = new System.Drawing.Size(600, 236);
             this.dsGrid.TabIndex = 24;
             this.dsGrid.UseWaitCursor = true;
             // 
